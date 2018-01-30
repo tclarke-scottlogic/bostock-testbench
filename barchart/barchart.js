@@ -1,6 +1,6 @@
 console.info("Downloaded started...");
 
-let width = 800;
+let width = 500;
 let bar_height = 20;
 
 let x = d3.scale.linear()
@@ -10,12 +10,12 @@ let chart = d3.select(".chart")
     .attr("width", width)
     
 
-d3.tsv("http://localhost:3100/data/valoos.tsv", function(error, duto){
+d3.tsv("http://localhost:3100/data/valoos.tsv", type, function(error, duto){
     console.info("Downloaded!");
 
     console.info(duto);
 
-    let val = d3.max(duto, function(d) { return parseInt(d.value); });
+    let val = d3.max(duto, function(d) { return d.value; });
     console.info(val);
     x.domain([0,val])
     chart.attr("height", bar_height * duto.length);
@@ -43,6 +43,6 @@ d3.tsv("http://localhost:3100/data/valoos.tsv", function(error, duto){
 console.info("Downloading...");
 
 function type(d) {
-    d.value = +d.value; // coerce to number
+    d.value = parseInt(d.value); // coerce to number
     return d;
 }
