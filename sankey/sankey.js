@@ -24,7 +24,7 @@ var node = svg.append("g")
 .attr("font-size", 10)
 .selectAll("g");
 
-d3.json("http://localhost:3100/data/energy.json", function(error, energy) {
+d3.json("http://localhost:3100/data/avengers.json", function(error, energy) {
 if (error) throw error;
 
 sankey(energy);
