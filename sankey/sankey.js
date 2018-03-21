@@ -24,9 +24,7 @@ var node = svg.append("g")
 .attr("font-size", 10)
 .selectAll("g");
 
-d3.json("http://localhost:3100/data/avengers.json", function(error, energy) {
-if (error) throw error;
-
+function make(energy) {
 sankey(energy);
 
 link = link
@@ -62,4 +60,7 @@ node.append("text")
 
 node.append("title")
   .text(function(d) { return d.name + "\n" + format(d.value); });
-});
+};
+
+let make_args = nrg();
+make(make_args);
